@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand navbar-light bg-light py-3 fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand px-3" href="/">The Memers Club</a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav px-3">
+        <% if (!user) { %>
+        <li class="nav-item">
+          <a
+            class="
+              btn btn-light
+              shadow-sm
+              text-primary
+              rounded-pill
+              fw-bold
+              mx-2
+            "
+            aria-current="page"
+            href="/signup"
+            >Sign Up</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="
+              btn btn-light
+              shadow-sm
+              text-primary
+              rounded-pill
+              fw-bold
+              mx-2
+            "
+            href="/login"
+            >Login</a
+          >
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a
+            class="
+              btn btn-light
+              shadow-sm
+              text-primary
+              rounded-pill
+              fw-bold
+              mx-2
+            "
+            href="#"
+            >Create Message</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="
+              btn btn-light
+              shadow-sm
+              text-primary
+              rounded-pill
+              fw-bold
+              mx-2
+            "
+            href="/logout"
+            >Log Out</a
+          >
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

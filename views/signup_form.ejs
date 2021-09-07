@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') -%>
+  </head>
+  <body>
+    <div
+      class="
+        container-fluid
+        d-flex
+        justify-content-center
+        align-items-center
+        h-100
+      "
+    >
+      <% if(typeof errors !== 'undefined'){ %>
+      <ul>
+        <% errors.forEach(err => { %>
+        <li><%= err.message %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+      <!-- prettier-ignore -->
+      <% if(typeof error !== 'undefined'){ %>
+      <p><%= error %></p>
+      <% } %>
+
+      <div class="bg-light w-50 p-4 rounded">
+        <h1>Become a member</h1>
+        <p>
+          Already have an account?
+          <a class="link-primary text-decoration-none" href="/login">Login</a>
+        </p>
+        <form method="POST" action="">
+          <div class="form-group py-2">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" />
+          </div>
+
+          <div class="form-group py-2">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" />
+          </div>
+
+          <div class="form-group py-2">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              class="form-control"
+              type="password"
+              name="confirm-password"
+            />
+          </div>
+
+          <div class="form-group py-2">
+            <label for="secretPassword">Secret Password</label>
+            <input class="form-control" type="password" name="secretPassword" />
+          </div>
+
+          <div class="pt-3">
+            <button class="btn btn-primary">Sign Up</button>
+            <a class="btn btn-outline-primary mx-2" href="/">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background-image: url("../images/double-bubble-dark.png");
+}
