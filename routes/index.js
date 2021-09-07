@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const authController = require("../controllers/authController");
+const messageController = require("../controllers/messageController");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -20,9 +21,11 @@ router.post("/signup", authController.signup_post);
 // GET for log out
 router.get("/logout", authController.logout_get);
 
-// MEMBER ROUTES
+// MESSAGE ROUTES
 
 // GET for create message
+router.get("/new-message", messageController.create_message_get);
 // POST for create message
+router.post("/new-message", messageController.create_message_post);
 
 module.exports = router;

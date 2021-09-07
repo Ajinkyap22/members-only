@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') -%>
+  </head>
+  <body>
+    <header><%- include('./partials/header') -%></header>
+
+    <div
+      class="
+        container-fluid
+        d-flex
+        justify-content-center
+        align-items-center
+        h-100
+      "
+    >
+      <% if(typeof errors !== 'undefined'){ %>
+      <ul>
+        <% errors.forEach(err => { %>
+        <li><%= err.message %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <div class="bg-light w-50 p-4 rounded">
+        <h1>New Message</h1>
+
+        <form method="POST" action="">
+          <div class="form-group py-2">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="form-control" />
+          </div>
+
+          <div class="form-group py-2">
+            <label for="message">Message:</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="5"
+              class="form-control"
+            ></textarea>
+
+            <div class="pt-3">
+              <button class="btn btn-primary">Post</button>
+              <a class="btn btn-outline-primary mx-2" href="/">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
