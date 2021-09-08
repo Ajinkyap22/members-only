@@ -6,6 +6,55 @@
   <body>
     <header><%- include('./partials/header') -%></header>
 
-    <div class="container-fluid"></div>
+    <div
+      class="
+        container-fluid
+        d-flex
+        flex-column
+        justify-content-start
+        align-items-center
+        h-100
+      "
+    >
+      <% messages.forEach((msg) => { %>
+      <div class="bg-light w-50 p-3 rounded d-flex">
+        <div class="w-25 text-center">
+          <!-- avatar -->
+          <img
+            src="/images/default.png"
+            alt="Avatar"
+            class="img-fluid rounded-circle border"
+          />
+
+          <!-- user -->
+          <label class="pt-3 lead"><%= msg.member.username %></label>
+        </div>
+
+        <div
+          class="px-3 d-flex flex-column justify-content-between flex-grow-1"
+        >
+          <!-- title -->
+          <p class="lead fw-bold"><%= msg.title %></p>
+
+          <!-- text -->
+          <p class="justify-self-start"><%= msg.text %></p>
+
+          <hr />
+
+          <!-- timestamp -->
+          <span class="align-self-end"
+            >Posted: <%= msg.timestamp_formatted %></span
+          >
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </body>
 </html>
+
+<!-- leo -->
+<!-- harold -->
+<!-- dogge -->
+<!-- thomas -->
+<!-- chad -->
+<!-- sam jackson -->

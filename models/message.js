@@ -9,8 +9,8 @@ const MessageSchema = new Schema({
   text: { type: String, required: true, maxlength: 200 },
 });
 
-MessageSchema.virtual("timestamp_formatedd").get(function () {
+MessageSchema.virtual("timestamp_formatted").get(function () {
   return DateTime.fromJSDate(this.timestamp).toLocaleString(DateTime.DATE_MED);
 });
 
-module.exports = MessageSchema;
+module.exports = mongoose.model("Message", MessageSchema);

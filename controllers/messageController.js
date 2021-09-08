@@ -1,5 +1,5 @@
-const { body, validationResult } = require("express-validator");
 const Message = require("../models/message");
+const { body, validationResult } = require("express-validator");
 
 exports.create_message_get = function (req, res) {
   if (!res.locals.currentUser) res.redirect("/");
@@ -20,28 +20,27 @@ exports.create_message_post = [
     // extract errors
     const errors = validationResult(req.body);
 
+    // re-render if errors
+    if (!errors.isEmpty()) {
+      res.render("message_form", {
+        title: "New Message",
+        errors: errors.array(),
+      });
+    }
+
     // create new message object
     const message = new Message({
       title: req.body.title,
       text: req.body.message,
       timestamp: Date.now(),
-      member: res.locals.currentUser._id,
+      member: req.user._id,
     });
 
-    // re-render if errors
-    if (!errors.isEmpty()) {
-      return res.render("message_form", {
-        title: "New Message",
-        user: res.locals.currentUser,
-        errors: errors.array(),
-      });
-    } else {
-      // save
-      await message.save((err) => {
-        if (err) return next(err);
+    // save
+    await message.save((err) => {
+      if (err) return next(err);
 
-        res.redirect("/");
-      });
-    }
+      res.redirect("/");
+    });
   },
 ];

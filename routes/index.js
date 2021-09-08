@@ -2,10 +2,23 @@ var express = require("express");
 var router = express.Router();
 const authController = require("../controllers/authController");
 const messageController = require("../controllers/messageController");
+const Message = require("../models/message");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Members Only", user: res.locals.currentUser });
+router.get("/", async function (req, res, next) {
+  try {
+    const messages = await Message.find()
+      .sort([["timestamp", "descending"]])
+      .populate("member");
+
+    res.render("index", {
+      title: "Members Only",
+      user: res.locals.currentUser,
+      messages,
+    });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 // AUTH ROUTES
