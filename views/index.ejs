@@ -26,8 +26,17 @@
             class="img-fluid rounded-circle border"
           />
 
+          <% if (!user) { %>
+          <small class="pt-3">
+            <a class="link-primary text-decoration-none" href="/login"
+              >Login
+            </a>
+            to see who posted this message.</small
+          >
+          <% } else { %>
           <!-- user -->
           <label class="pt-3 lead"><%= msg.member.username %></label>
+          <% } %>
         </div>
 
         <div
@@ -51,10 +60,3 @@
     </div>
   </body>
 </html>
-
-<!-- leo -->
-<!-- harold -->
-<!-- dogge -->
-<!-- thomas -->
-<!-- chad -->
-<!-- sam jackson -->
