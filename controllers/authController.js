@@ -73,7 +73,7 @@ exports.signup_post = [
         }).save((err) => {
           if (err) return next(err);
 
-          res.redirect("/");
+          res.redirect("/login");
         });
       });
     } catch (err) {

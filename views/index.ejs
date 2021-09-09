@@ -17,21 +17,29 @@
       "
     >
       <% messages.forEach((msg) => { %>
-      <div class="bg-light w-50 p-3 rounded d-flex">
+      <div class="bg-light w-50 p-3 rounded d-flex m-3">
         <div class="w-25 text-center">
           <!-- avatar -->
+          <% if(!msg.member.avatar) { %>
           <img
-            src="/images/default.png"
+            src="/images/avatars/default.png"
             alt="Avatar"
-            class="img-fluid rounded-circle border"
+            class="img-fluid rounded-circle border avatar"
           />
 
-          <% if (!user) { %>
-          <small class="pt-3">
-            <a class="link-primary text-decoration-none" href="/login"
-              >Login
-            </a>
-            to see who posted this message.</small
+          <% } else { %>
+          <!-- prettier-ignore -->
+          <% let avatar = `/images/avatars/${msg.member.avatar}.jpg` %>
+          <img
+            src="<%=avatar%>"
+            alt="Avatar"
+            class="img-fluid rounded-circle border avatar"
+          />
+
+          <% } %> <% if (!user) { %>
+          <small class="pt-3 d-block">
+            <a class="link-primary text-decoration-none" href="/login">Login </a
+            >to see who posted this message.</small
           >
           <% } else { %>
           <!-- user -->

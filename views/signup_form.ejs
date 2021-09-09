@@ -25,25 +25,30 @@
       <p><%= error %></p>
       <% } %>
 
-      <div class="bg-light w-50 p-4 rounded">
-        <h1>Become a member</h1>
-        <p>
-          Already have an account?
-          <a class="link-primary text-decoration-none" href="/login">Login</a>
-        </p>
+      <div class="bg-light w-50 px-4 py-3 rounded">
+        <div class="text-center">
+          <h2>Become a member</h2>
+          <p>
+            Already have an account?
+            <a class="link-primary text-decoration-none" href="/login">Login</a>
+          </p>
+        </div>
+
         <form method="POST" action="">
           <div class="form-group py-2">
-            <label for="username">Username</label>
+            <label class="fw-bold" for="username">Username:</label>
             <input class="form-control" type="text" name="username" />
           </div>
 
           <div class="form-group py-2">
-            <label for="password">Password</label>
+            <label class="fw-bold" for="password">Password:</label>
             <input class="form-control" type="password" name="password" />
           </div>
 
           <div class="form-group py-2">
-            <label for="confirm-password">Confirm Password</label>
+            <label class="fw-bold" for="confirm-password"
+              >Confirm Password:</label
+            >
             <input
               class="form-control"
               type="password"
@@ -52,67 +57,65 @@
           </div>
 
           <div class="form-group py-2">
-            <label for="secretPassword">Secret Password</label>
+            <label class="fw-bold" for="secretPassword">Secret Password:</label>
             <input class="form-control" type="password" name="secretPassword" />
           </div>
 
-          <label>Select Avatar:</label>
+          <label class="fw-bold">Select Avatar:</label>
 
-          <fieldset id="buttonGroup">
-            <div class="button-group py-2 row" role="group">
-              <div class="col">
-                <label>
-                  <input type="radio" name="avatar" value="leo" checked />
-                  <img
-                    src="/images/avatars/leo.jpg"
-                    class="img-fluid avatar rounded-circle"
-                  />
-                </label>
-              </div>
-
-              <div class="col">
-                <label>
-                  <input type="radio" name="avatar" value="harold" />
-                  <img
-                    src="/images/avatars/harold.jpg"
-                    class="img-fluid avatar rounded-circle"
-                  />
-                </label>
-              </div>
-
-              <div class="col">
-                <label>
-                  <input type="radio" name="avatar" value="doge" />
-                  <img
-                    src="/images/avatars/doge.jpg"
-                    class="img-fluid avatar rounded-circle"
-                  />
-                </label>
-              </div>
-
-              <div class="col">
-                <label>
-                  <input type="radio" name="avatar" value="thomas" />
-                  <img
-                    src="/images/avatars/thomas.png"
-                    class="img-fluid avatar rounded-circle"
-                  />
-                </label>
-              </div>
-
-              <div class="col">
-                <label>
-                  <input type="radio" name="avatar" value="will" />
-                  <img
-                    src="/images/avatars/will.jpg"
-                    class="img-fluid avatar rounded-circle"
-                  />
-                </label>
-              </div>
+          <div class="button-group py-2 row" role="group">
+            <div class="col">
+              <label>
+                <input type="radio" name="avatar" value="leo" checked />
+                <img
+                  src="/images/avatars/leo.jpg"
+                  class="img-fluid avatar rounded-circle"
+                />
+              </label>
             </div>
-          </fieldset>
 
-          <div class="pt-3">
+            <div class="col">
+              <label>
+                <input type="radio" name="avatar" value="harold" />
+                <img
+                  src="/images/avatars/harold.jpg"
+                  class="img-fluid avatar rounded-circle"
+                />
+              </label>
+            </div>
+
+            <div class="col">
+              <label>
+                <input type="radio" name="avatar" value="doge" />
+                <img
+                  src="/images/avatars/doge.jpg"
+                  class="img-fluid avatar rounded-circle"
+                />
+              </label>
+            </div>
+
+            <div class="col">
+              <label>
+                <input type="radio" name="avatar" value="thomas" />
+                <img
+                  src="/images/avatars/thomas.png"
+                  class="img-fluid avatar rounded-circle"
+                />
+              </label>
+            </div>
+
+            <div class="col">
+              <label>
+                <input type="radio" name="avatar" value="will" />
+                <img
+                  src="/images/avatars/will.jpg"
+                  class="img-fluid avatar rounded-circle"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-4">
             <button class="btn btn-primary">Sign Up</button>
             <a class="btn btn-outline-primary mx-2" href="/">Cancel</a>
           </div>

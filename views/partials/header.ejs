@@ -63,6 +63,24 @@
             >Log Out</a
           >
         </li>
+        <li class="nav-item">
+          <% if(!user.avatar) { %>
+          <img
+            src="/images/avatars/default.png"
+            alt="Avatar"
+            class="rounded-circle avatar border"
+          />
+
+          <% } else { %>
+          <!-- prettier-ignore -->
+          <% let avatar = `/images/avatars/${user.avatar}.jpg` %>
+          <img
+            src="<%=avatar%>"
+            alt="Avatar"
+            class="rounded-circle avatar border"
+          />
+          <% } %>
+        </li>
         <% } %>
       </ul>
     </div>
