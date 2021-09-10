@@ -27,3 +27,8 @@ body {
   width: 6.5rem;
   height: 6.5rem;
 }
+
+.profile {
+  width: 2.5rem;
+  height: auto;
+}

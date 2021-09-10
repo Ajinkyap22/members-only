@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const authController = require("../controllers/authController");
 const messageController = require("../controllers/messageController");
+const memberController = require("../controllers/memberController");
 const Message = require("../models/message");
 
 /* GET home page. */
@@ -40,5 +41,12 @@ router.get("/logout", authController.logout_get);
 router.get("/new-message", messageController.create_message_get);
 // POST for create message
 router.post("/new-message", messageController.create_message_post);
+
+// MEMBER ROUTES
+
+// GET for edit profile
+router.get("/edit-profile", memberController.edit_get);
+// POST for edit profile
+router.post("/edit-profile", memberController.edit_post);
 
 module.exports = router;
