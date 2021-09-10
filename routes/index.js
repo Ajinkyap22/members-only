@@ -44,9 +44,11 @@ router.post("/new-message", messageController.create_message_post);
 
 // MEMBER ROUTES
 
+// GET for member profile
+router.get("/profile/:id", memberController.profile_get);
 // GET for edit profile
-router.get("/edit-profile", memberController.edit_get);
+router.get("/edit-profile/:id", memberController.edit_get);
 // POST for edit profile
-router.post("/edit-profile", memberController.edit_post);
+router.post("/edit-profile/:id", memberController.edit_post);
 
 module.exports = router;

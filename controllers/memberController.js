@@ -1,14 +1,32 @@
 require("dotenv").config();
 const { body, validationResult } = require("express-validator");
 const Member = require("../models/member");
+const Message = require("../models/message");
 
-exports.edit_get = function (req, res) {
-  res.render("profile_edit", { title: "Edit Profile" });
+exports.profile_get = async function (req, res, next) {
+  if (!res.locals.currentUser) res.redirect("/");
+
+  try {
+    const messages = await Message.find({ member: req.user._id })
+      .sort([["timestamp", "descending"]])
+      .populate("member");
+
+    res.render("profile", {
+      title: "Member Profile",
+      user: res.locals.currentUser,
+      messages,
+    });
+  } catch (err) {
+    return next(err);
+  }
 };
 
-// username
-
-// avatar
+exports.edit_get = function (req, res) {
+  res.render("edit_form", {
+    title: "Edit Profile",
+    user: res.locals.currentUser,
+  });
+};
 
 exports.edit_post = [
   // sanitize and validate fields

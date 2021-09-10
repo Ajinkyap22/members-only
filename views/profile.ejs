@@ -16,11 +16,43 @@
         h-100
       "
     >
+      <div class="w-50 bg-light rounded p-4 text-center">
+        <h1 class="display-6">Member Profile - <%=user.username%></h1>
+
+        <div class="d-flex justify-content-center py-3">
+          <% if(!user.avatar) { %>
+          <img
+            src="/images/avatars/default.png"
+            alt="Avatar"
+            class="img-fluid rounded-circle border avatar"
+          />
+
+          <% } else { %>
+          <!-- prettier-ignore -->
+          <% let avatar = `/images/avatars/${user.avatar}.jpg` %>
+          <img
+            src="<%=avatar%>"
+            alt="Avatar"
+            class="img-fluid rounded-circle border avatar"
+          />
+
+          <% } %>
+        </div>
+
+        <a class="btn btn-primary my-3" href="/edit-profile/<%=user._id%>"
+          >Edit Profile</a
+        >
+      </div>
+
+      <h1 class="display-6 text-white py-3">Messages</h1>
+
+      <% if (messages.length > 0) { %>
+      <!-- prettier-ignore -->
       <% messages.forEach((msg) => { %>
       <div class="bg-light w-50 p-3 rounded d-flex m-3">
         <div class="w-25 text-center">
           <!-- avatar -->
-          <% if(!msg.member.avatar) { %>
+          <%= console.log(msg.member) %> <% if(!msg.member.avatar) { %>
           <img
             src="/images/avatars/default.png"
             alt="Avatar"
@@ -37,16 +69,8 @@
           />
 
           <% } %>
-          <!-- prettier-ignore -->
-          <% if (!user) { %>
-          <small class="pt-3 d-block">
-            <a class="link-primary text-decoration-none" href="/login">Login </a
-            >to see who posted this message.</small
-          >
-          <% } else { %>
-          <!-- user -->
+
           <label class="pt-3 lead"><%= msg.member.username %></label>
-          <% } %>
         </div>
 
         <div
@@ -67,6 +91,16 @@
         </div>
       </div>
       <% }) %>
+      <!-- prettier-ignore -->
+      <% } else { %>
+      <p>
+        You have not posted any messages yet. Click
+        <a class="link-primary text-decoration-none" href="/create-message"
+          >here</a
+        >
+        to create one
+      </p>
+      <% } %>
     </div>
 
     <footer><%- include('./partials/footer') -%></footer>
