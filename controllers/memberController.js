@@ -1,4 +1,5 @@
 require("dotenv").config();
+const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 const Member = require("../models/member");
 const Message = require("../models/message");
@@ -22,9 +23,14 @@ exports.profile_get = async function (req, res, next) {
 };
 
 exports.edit_get = function (req, res) {
-  res.render("edit_form", {
+  if (!res.locals.currentUser) {
+    res.redirect("/");
+  }
+
+  res.render("signup_form", {
     title: "Edit Profile",
     user: res.locals.currentUser,
+    isUpdating: true,
   });
 };
 
@@ -42,26 +48,40 @@ exports.edit_post = [
 
     // re-render if errors
     if (!errors.isEmpty()) {
-      res.render("profile_edit", {
+      res.render("signup_form", {
         title: "Edit Profile",
         errors: errors.array(),
+        isUpdating: true,
       });
     }
 
-    // create member object
-    const member = new Member({
-      username: req.body.username,
-      password: req.user.password,
-      member: true,
-      avatar: req.body.avatar,
-      admin: req.user.admin,
-    });
+    if (!req.body.avatar) {
+      req.body.avatar = req.user.avatar;
+    }
 
-    // save
-    Member.findByIdAndUpdate(req.user._id, member, {}, function (err) {
-      if (err) return next(err);
+    try {
+      // TODO
+      // check if user already exists
+      // messages page not updating username
 
-      res.redirect("/");
-    });
+      // create new user
+      bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if (err) return next(err);
+
+        const member = new Member({
+          username: req.body.username,
+          password: hash,
+          member: true,
+          avatar: req.body.avatar,
+          admin: req.user.admin,
+        }).save((err) => {
+          if (err) return next(err);
+
+          res.redirect("/login");
+        });
+      });
+    } catch (err) {
+      return next(err);
+    }
   },
 ];

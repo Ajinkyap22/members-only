@@ -39,9 +39,10 @@
           <% } %>
         </div>
 
-        <a class="btn btn-primary my-3" href="/edit-profile/<%=user._id%>"
-          >Edit Profile</a
-        >
+        <div class="my-3">
+          <a class="btn btn-primary mx-2" href="/edit-profile">Edit Profile</a>
+          <a class="btn btn-primary mx-2" href="/admin-form">Become An Admin</a>
+        </div>
       </div>
 
       <h1 class="display-6 text-white py-3">Messages</h1>
@@ -52,7 +53,7 @@
       <div class="bg-light w-50 p-3 rounded d-flex m-3">
         <div class="w-25 text-center">
           <!-- avatar -->
-          <%= console.log(msg.member) %> <% if(!msg.member.avatar) { %>
+          <% if(!msg.member.avatar) { %>
           <img
             src="/images/avatars/default.png"
             alt="Avatar"
