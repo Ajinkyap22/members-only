@@ -53,6 +53,7 @@
               type="text"
               name="username"
               value="<%= !isUpdating ? '' : user.username %>"
+              required
             />
           </div>
 
@@ -75,7 +76,7 @@
           <% if (!isUpdating) { %>
           <div class="form-group py-2">
             <label class="fw-bold" for="secretPassword">Secret Password:</label>
-            <input class="form-control" type="password" name="secretPassword" />
+            <input class="form-control" type="password" name="secretPassword" required />
           </div>
           <% } %>
 

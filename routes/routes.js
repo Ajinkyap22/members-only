@@ -54,5 +54,7 @@ router.post("/edit-profile", memberController.edit_post);
 router.get("/admin-form", memberController.admin_form_get);
 // POST for admin form
 router.post("/admin-form", memberController.admin_form_post);
+// POST for delet message
+router.post("/delete", messageController.delete_message_post);
 
 module.exports = router;

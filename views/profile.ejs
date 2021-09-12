@@ -39,6 +39,10 @@
           <% } %>
         </div>
 
+        <% if (user.admin) { %>
+        <small><i class="bi bi-shield-check"></i> Admin</small>
+        <% } %>
+
         <div class="my-3">
           <a class="btn btn-primary mx-2" href="/edit-profile">Edit Profile</a>
           <% if(!user.admin) { %>
@@ -83,8 +87,28 @@
         <div
           class="px-3 d-flex flex-column justify-content-between flex-grow-1"
         >
-          <!-- title -->
-          <p class="lead fw-bold"><%= msg.title %></p>
+          <div class="d-flex justify-content-between">
+            <!-- title -->
+            <p class="lead fw-bold"><%= msg.title %></p>
+
+            <!-- delete -->
+            <div>
+              <form action="/delete" method="POST">
+                <input
+                  type="hidden"
+                  name="messageId"
+                  value="<%=msg._id%>"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="bg-transparent border-0 text-danger"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+            </div>
+          </div>
 
           <!-- text -->
           <p class="justify-self-start"><%= msg.text %></p>

@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 // Memes club - MEMEbers only
 // avatars - drunk leo, harold in pain,
 
-var indexRouter = require("./routes/index");
+var indexRouter = require("./routes/routes");
 
 const app = express();
 // view engine setup
