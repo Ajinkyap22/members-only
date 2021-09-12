@@ -5,7 +5,7 @@ const Member = require("../models/member");
 const Message = require("../models/message");
 
 exports.profile_get = async function (req, res, next) {
-  if (!res.locals.currentUser) res.redirect("/");
+  if (!res.locals.currentUser) res.redirect("/login");
 
   try {
     const messages = await Message.find({ member: req.user._id })
@@ -24,7 +24,7 @@ exports.profile_get = async function (req, res, next) {
 
 exports.edit_get = function (req, res) {
   if (!res.locals.currentUser) {
-    res.redirect("/");
+    res.redirect("/login");
   }
 
   res.render("signup_form", {
@@ -60,9 +60,18 @@ exports.edit_post = [
     }
 
     try {
-      // TODO
       // check if user already exists
-      // messages page not updating username
+      if (req.body.username !== req.user.username) {
+        const userExists = await Member.find({ username: req.body.username });
+        if (userExists.length > 0) {
+          return res.render("signup_form", {
+            title: "Edit Profile",
+            error: "Username already exists",
+            isUpdating: true,
+            user: res.locals.currentUser,
+          });
+        }
+      }
 
       // create new user
       bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -74,14 +83,69 @@ exports.edit_post = [
           member: true,
           avatar: req.body.avatar,
           admin: req.user.admin,
-        }).save((err) => {
+          _id: req.user._id,
+        });
+
+        Member.findByIdAndUpdate(req.user._id, member, {}, function (err) {
           if (err) return next(err);
 
-          res.redirect("/login");
+          res.redirect(`/profile/${req.user._id}`);
         });
       });
     } catch (err) {
       return next(err);
     }
+  },
+];
+
+exports.admin_form_get = function (req, res) {
+  if (!res.locals.currentUser) res.redirect("/login");
+
+  res.render("admin_form", {
+    title: "Become an admin",
+    user: res.locals.currentUser,
+  });
+};
+
+exports.admin_form_post = [
+  // sanitize and validate
+  body("secretPhrase", "Incorrect Secret Phase")
+    .trim()
+    .isLength({ min: 6 })
+    .escape(),
+
+  // process request
+  (req, res, next) => {
+    // extract errors
+    const errors = validationResult(req.body);
+
+    if (req.body.secretPhrase !== process.env.SECRET_PHRASE) {
+      return res.render("admin_form", {
+        title: "Become an admin",
+        user: res.locals.currentUser,
+        error: "Incorect phrase. You failed the test.",
+      });
+    }
+
+    // re-render if errors
+    if (!errors.isEmpty()) {
+      return res.render("admin_form", {
+        title: "Become an admin",
+        user: res.locals.currentUser,
+        errors: errors.array(),
+      });
+    }
+
+    // update member
+    Member.findByIdAndUpdate(
+      req.user._id,
+      { $set: { admin: true } },
+      {},
+      function (err) {
+        if (err) return next(err);
+
+        res.redirect(`profile/${req.user._id}`);
+      }
+    );
   },
 ];

@@ -50,5 +50,9 @@ router.get("/profile/:id", memberController.profile_get);
 router.get("/edit-profile", memberController.edit_get);
 // POST for edit profile
 router.post("/edit-profile", memberController.edit_post);
+// GET for admin form
+router.get("/admin-form", memberController.admin_form_get);
+// POST for admin form
+router.post("/admin-form", memberController.admin_form_post);
 
 module.exports = router;

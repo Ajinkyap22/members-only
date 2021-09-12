@@ -41,7 +41,13 @@
 
         <div class="my-3">
           <a class="btn btn-primary mx-2" href="/edit-profile">Edit Profile</a>
-          <a class="btn btn-primary mx-2" href="/admin-form">Become An Admin</a>
+          <% if(!user.admin) { %>
+          <a
+            class="btn btn-outline-primary text-decoration-none mx-2"
+            href="/admin-form"
+            >Become An Admin</a
+          >
+          <% } %>
         </div>
       </div>
 

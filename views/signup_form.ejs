@@ -13,19 +13,9 @@
         h-100
       "
     >
-      <% if(typeof errors !== 'undefined'){ %>
-      <ul>
-        <% errors.forEach(err => { %>
-        <li><%= err.message %></li>
-        <% }) %>
-      </ul>
-      <% } %>
-      <!-- prettier-ignore -->
-      <% if(typeof error !== 'undefined'){ %>
-      <p><%= error %></p>
-      <% } %>
-
       <div class="bg-light w-50 px-4 py-3 rounded">
+        <!-- title -->
+
         <div class="text-center">
           <% if(!isUpdating) { %>
           <h2>Become a member</h2>
@@ -38,6 +28,22 @@
             <a class="link-primary text-decoration-none" href="/login">Login</a>
           </p>
         </div>
+
+        <!-- errors -->
+
+        <% if(typeof errors !== 'undefined'){ %>
+        <ul>
+          <% errors.forEach(err => { %>
+          <li class="text-danger"><%= err.message %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+        <!-- prettier-ignore -->
+        <% if(typeof error !== 'undefined'){ %>
+        <p class="text-danger"><%= error %></p>
+        <% } %>
+
+        <!-- form -->
 
         <form method="POST" action="">
           <div class="form-group py-2">
