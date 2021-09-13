@@ -47,7 +47,7 @@
 
         <form method="POST" action="">
           <div class="form-group py-2">
-            <label class="fw-bold" for="username">Username:</label>
+            <label class="fw-bold" for="username">Username</label>
             <input
               class="form-control"
               type="text"
@@ -58,7 +58,7 @@
           </div>
 
           <div class="form-group py-2">
-            <label class="fw-bold" for="password">Password:</label>
+            <label class="fw-bold" for="password">Password</label>
             <input class="form-control" type="password" name="password" />
           </div>
 
@@ -75,7 +75,7 @@
 
           <% if (!locals.isUpdating) { %>
           <div class="form-group py-2">
-            <label class="fw-bold" for="secretPassword">Secret Password:</label>
+            <label class="fw-bold" for="secretPassword">Secret Password</label>
             <input
               class="form-control"
               type="password"
@@ -85,7 +85,7 @@
           </div>
           <% } %>
 
-          <label class="fw-bold">Select Avatar:</label>
+          <label class="fw-bold">Select Avatar</label>
 
           <div class="button-group py-2 row" role="group">
             <div class="col">
@@ -140,8 +140,10 @@
           </div>
 
           <div class="pt-4">
-            <button class="btn btn-primary">Sign Up</button>
-            <a class="btn btn-outline-primary mx-2" href="/">Cancel</a>
+            <button class="btn btn-dark fw-bold spacing">Sign Up</button>
+            <a class="btn btn-outline-dark fw-bold spacing mx-2" href="/"
+              >Cancel</a
+            >
           </div>
         </form>
       </div>

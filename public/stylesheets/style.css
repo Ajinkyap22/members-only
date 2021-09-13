@@ -2,14 +2,20 @@ html,
 body {
   position: relative;
   height: 100%;
+  width: 100%;
 }
 
 * {
   font-family: "Lato", sans-serif;
+  max-width: 100%;
 }
 
 body {
   background-image: url("../images/double-bubble-dark.png");
+}
+
+.wrapper {
+  overflow-x: hidden;
 }
 
 [type="radio"] {
@@ -40,4 +46,8 @@ body {
 .navbar,
 .message {
   box-shadow: 0 0 5px #f3f3f3;
+}
+
+.spacing {
+  letter-spacing: 1px;
 }

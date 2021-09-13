@@ -44,12 +44,18 @@
         <% } %>
 
         <div class="my-3">
-          <a class="btn btn-primary mx-2" href="/edit-profile">
+          <a class="btn btn-dark fw-bold spacing mx-2" href="/edit-profile">
             <i class="bi bi-pencil"> Edit Profile</i></a
           >
           <% if(!user.admin) { %>
           <a
-            class="btn btn-outline-primary text-decoration-none mx-2"
+            class="
+              btn btn-outline-dark
+              fw-bold
+              spacing
+              text-decoration-none
+              mx-2
+            "
             href="/admin-form"
             ><i class="bi bi-shield-check"> Become An Admin</i></a
           >
