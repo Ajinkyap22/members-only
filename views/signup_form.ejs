@@ -17,16 +17,16 @@
         <!-- title -->
 
         <div class="text-center">
-          <% if(!isUpdating) { %>
+          <% if(!locals.isUpdating) { %>
           <h2>Become a member</h2>
+
+          <p>
+            Already a meme lord?
+            <a class="link-primary text-decoration-none" href="/login">Login</a>
+          </p>
           <% } else { %>
           <h2>Edit Profile</h2>
           <% } %>
-
-          <p>
-            Already have an account?
-            <a class="link-primary text-decoration-none" href="/login">Login</a>
-          </p>
         </div>
 
         <!-- errors -->
@@ -52,7 +52,7 @@
               class="form-control"
               type="text"
               name="username"
-              value="<%= !isUpdating ? '' : user.username %>"
+              value="<%= !locals.isUpdating ? '' : user.username %>"
               required
             />
           </div>
@@ -73,10 +73,15 @@
             />
           </div>
 
-          <% if (!isUpdating) { %>
+          <% if (!locals.isUpdating) { %>
           <div class="form-group py-2">
             <label class="fw-bold" for="secretPassword">Secret Password:</label>
-            <input class="form-control" type="password" name="secretPassword" required />
+            <input
+              class="form-control"
+              type="password"
+              name="secretPassword"
+              required
+            />
           </div>
           <% } %>
 

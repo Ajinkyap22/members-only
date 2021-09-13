@@ -17,7 +17,7 @@
       "
     >
       <% messages.forEach((msg) => { %>
-      <div class="bg-light w-50 p-3 rounded d-flex m-3">
+      <div class="bg-light w-50 p-3 rounded d-flex m-3 message">
         <div class="w-25 text-center">
           <!-- avatar -->
           <% if(!msg.member.avatar) { %>
@@ -41,7 +41,7 @@
           <% if (!user) { %>
           <small class="pt-3 d-block">
             <a class="link-primary text-decoration-none" href="/login">Login </a
-            >to see who posted this message.</small
+            >to see which lord posted this message.</small
           >
           <% } else { %>
           <!-- user -->

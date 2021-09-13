@@ -4,6 +4,10 @@ body {
   height: 100%;
 }
 
+* {
+  font-family: "Lato", sans-serif;
+}
+
 body {
   background-image: url("../images/double-bubble-dark.png");
 }
@@ -31,4 +35,9 @@ body {
 .profile {
   width: 2.5rem;
   height: auto;
+}
+
+.navbar,
+.message {
+  box-shadow: 0 0 5px #f3f3f3;
 }
