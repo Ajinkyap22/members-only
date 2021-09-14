@@ -40,6 +40,19 @@ exports.edit_post = [
     .trim()
     .isLength({ min: 3 })
     .escape(),
+  body("password", "Password must be at least 3 characters long.")
+    .trim()
+    .isLength({ min: 6 })
+    .escape(),
+  body("confirmPassword", "Password must be at least 3 characters long.")
+    .trim()
+    .isLength({ min: 6 })
+    .escape()
+    .custom(async (value, { req }) => {
+      if (value !== req.body.password)
+        throw new Error("Cnofirmed Password must be the same as password");
+      return true;
+    }),
 
   // process request
   async (req, res, next) => {
@@ -71,6 +84,16 @@ exports.edit_post = [
             user: res.locals.currentUser,
           });
         }
+      }
+
+      // check if passwords match
+      if (req.body.password !== req.body.confirmPassword) {
+        return res.render("signup_form", {
+          title: "Edit Profile",
+          error: "Confirmed Password must be the same as password.",
+          isUpdating: true,
+          user: res.locals.currentUser,
+        });
       }
 
       // create new user

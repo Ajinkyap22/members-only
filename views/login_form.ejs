@@ -27,7 +27,7 @@
         <% if(typeof errors !== 'undefined'){ %>
         <ul>
           <% errors.forEach(err => { %>
-          <li class="link-danger"><%= err.message %></li>
+          <li class="text-danger"><%= err.message %></li>
           <% }) %>
         </ul>
         <% } %>
@@ -35,12 +35,16 @@
         <!-- form -->
         <form method="POST" action="">
           <div class="form-group py-2">
-            <label for="username" class="fw-bold pb-2">Username</label>
+            <label for="username" class="fw-bold pb-2"
+              >Username <span class="text-danger">*</span></label
+            >
             <input class="form-control" type="text" name="username" />
           </div>
 
           <div class="form-group py-2">
-            <label for="password" class="fw-bold pb-2">Password</label>
+            <label for="password" class="fw-bold pb-2"
+              >Password <span class="text-danger">*</span></label
+            >
             <input class="form-control" type="password" name="password" />
           </div>
 

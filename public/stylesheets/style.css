@@ -35,7 +35,7 @@ body {
 
 .avatar {
   width: 6.5rem;
-  height: auto;
+  height: 6.5rem;
 }
 
 .profile {
@@ -72,5 +72,10 @@ body {
 
   .navbar-nav {
     flex-direction: row-reverse !important;
+  }
+
+  .avatar {
+    width: 6.5rem;
+    height: auto;
   }
 }

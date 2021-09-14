@@ -23,7 +23,7 @@
         <% if(typeof errors !== 'undefined'){ %>
         <ul>
           <% errors.forEach(err => { %>
-          <li class="link-danger"><%= err.message %></li>
+          <li class="text-danger"><%= err.message %></li>
           <% }) %>
         </ul>
         <% } %>
@@ -35,7 +35,9 @@
 
         <form method="POST" action="">
           <div class="form-group py-2">
-            <label for="secretPhrase" class="fw-bold pb-2">Secret Phrase</label>
+            <label for="secretPhrase" class="fw-bold pb-2"
+              >Secret Phrase <span class="text-danger">*</span></label
+            >
             <input
               type="password"
               name="secretPhrase"

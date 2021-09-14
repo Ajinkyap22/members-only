@@ -18,13 +18,13 @@ exports.signup_post = [
     .trim()
     .isLength({ min: 6 })
     .escape(),
-  body("confirm-password", "Password must be at least 3 characters long.")
+  body("confirmPassword", "Password must be at least 3 characters long.")
     .trim()
     .isLength({ min: 6 })
     .escape()
-    .custom((value, { req }) => {
+    .custom(async (value, { req }) => {
       if (value !== req.body.password)
-        throw new Error("Password must be the same");
+        throw new Error("Cnofirmed Password must be the same as password");
       return true;
     }),
   body("secretPassword", "This is not the secret password").trim().escape(),
@@ -52,8 +52,15 @@ exports.signup_post = [
         });
       }
 
-      // check secret password
+      if (req.body.password !== req.body.confirmPassword) {
+        return res.render("signup_form", {
+          title: "Sign Up",
+          error: "Confirmed Password must be the same as password.",
+        });
+      }
+      
       if (req.body.secretPassword !== process.env.SECRET_PASSWORD) {
+        // check secret password
         return res.render("signup_form", {
           title: "Sign Up",
           error: "Incorrect Secret Password",
