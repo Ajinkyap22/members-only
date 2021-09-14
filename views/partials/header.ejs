@@ -2,17 +2,17 @@
   class="
     navbar navbar-expand navbar-light
     bg-light
-    my-5
-    rounded
-    w-100-sm w-75
+    mb-3
+    my-sm-5
+    w-75
     py-2
     m-auto
     sticky-top
   "
 >
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <!-- title -->
-    <a class="navbar-brand" href="/">Lords of the Memes</a>
+    <a class="navbar-brand px-3" href="/">Lords of the Memes</a>
 
     <!-- menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -20,7 +20,16 @@
         <% if (!user) { %>
         <li class="nav-item">
           <a
-            class="btn btn-dark text-light spacing rounded-pill fw-bold mx-2"
+            class="
+              btn btn-dark
+              text-light
+              spacing
+              rounded-pill
+              fw-bold
+              mx-2
+              p-2
+              px-sm-3
+            "
             aria-current="page"
             href="/signup"
             >Sign Up</a
@@ -29,7 +38,16 @@
 
         <li class="nav-item">
           <a
-            class="btn btn-dark text-light spacing rounded-pill fw-bold mx-2"
+            class="
+              btn btn-dark
+              text-light
+              spacing
+              rounded-pill
+              fw-bold
+              mx-2
+              p-2
+              px-sm-3
+            "
             href="/login"
             >Login</a
           >
@@ -39,7 +57,7 @@
 
         <li class="nav-item">
           <a
-            class="btn btn-dark text-light spacing rounded-pill fw-bold"
+            class="btn btn-dark text-light spacing rounded-pill fw-bold create"
             href="/new-message"
             >Create Message</a
           >

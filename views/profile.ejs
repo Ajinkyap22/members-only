@@ -16,7 +16,7 @@
         h-100
       "
     >
-      <div class="w-50 bg-light rounded p-4 text-center">
+      <div class="w-50 bg-light rounded p-4 text-center w-80">
         <h1 class="display-6">Member Profile - <%=user.username%></h1>
 
         <div class="d-flex justify-content-center py-3">
@@ -44,7 +44,7 @@
         <% } %>
 
         <div class="my-3">
-          <a class="btn btn-dark fw-bold spacing mx-2" href="/edit-profile">
+          <a class="btn btn-dark fw-bold spacing m-2" href="/edit-profile">
             <i class="bi bi-pencil"> Edit Profile</i></a
           >
           <% if(!user.admin) { %>
@@ -54,7 +54,7 @@
               fw-bold
               spacing
               text-decoration-none
-              mx-2
+              m-2
             "
             href="/admin-form"
             ><i class="bi bi-shield-check"> Become An Admin</i></a
@@ -68,8 +68,8 @@
       <% if (messages.length > 0) { %>
       <!-- prettier-ignore -->
       <% messages.forEach((msg) => { %>
-      <div class="bg-light w-50 p-3 rounded d-flex m-3">
-        <div class="w-25 text-center">
+      <div class="bg-light w-50 p-3 rounded d-flex m-3 w-80">
+        <div class="w-25 text-center member">
           <!-- avatar -->
           <% if(!msg.member.avatar) { %>
           <img

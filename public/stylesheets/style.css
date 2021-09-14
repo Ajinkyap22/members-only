@@ -35,7 +35,7 @@ body {
 
 .avatar {
   width: 6.5rem;
-  height: 6.5rem;
+  height: auto;
 }
 
 .profile {
@@ -50,4 +50,27 @@ body {
 
 .spacing {
   letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 576px) {
+  .navbar {
+    width: 100% !important;
+  }
+
+  .w-80 {
+    width: 80% !important;
+  }
+
+  .member {
+    width: 50% !important;
+  }
+
+  .create {
+    font-size: 0.8rem !important;
+    letter-spacing: normal !important;
+  }
+
+  .navbar-nav {
+    flex-direction: row-reverse !important;
+  }
 }
