@@ -8,6 +8,8 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
+const compression = require("compression");
+const helmet = require("helmet");
 
 // Memes club - MEMEbers only
 // avatars - drunk leo, harold in pain,
@@ -30,6 +32,18 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": [
+        "'self'",
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js",
+      ],
+    },
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
 
 // passport setup
