@@ -19,6 +19,7 @@
 
 - Express
 - Node.js
+- CSS
 - Mongoose (MongoDB)
 - EJS
 - Bootstrap
